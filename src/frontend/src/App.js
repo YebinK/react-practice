@@ -1,37 +1,32 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 function App() {
+    const [username, setUsername] = useState('') //초기값: empty string
+    const [password, setPassword] = useState('') //초기값: empty string
 
-    const [text, setText] = useState('elly1');
-
-    const onKeyUp = (event) => {
-        if (event.keyCode === 13) { //엔터이면
-            onSubmit();
-        }
-        console.log('key up');
-    }
-
-    const onSubmit = () => {
+    const onSubmit = (event) => {
+        event.preventDefault(); //폼이 새로고침되는 것을 막아주기 위해
         alert('submitted');
+        console.log(username, password);
     }
 
-    // let ellyText = 'elly1';
-
-    const updateText = () => {
-        // ellyText = 'nelly1';
-        setText('nelly1');
-        console.log(text);
-    }
-
+    //input의 값이 변할 때마다 username 변수를 업데이트한다.
     return (
         <div className="App">
-            <input onKeyUp={onKeyUp}/>
-            <button onClick={onSubmit}>Submit</button>
+            <form onSubmit={onSubmit}>
+            <input
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}/>
+            <br/>
 
-            <br/> <br/>
-
-            <span>{text}</span>
-            <button onClick={updateText}>Update</button>
+            <input
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}/>
+            <br/>
+            <button type="submit">Login</button>
+            </form>
         </div>
     );
 }
