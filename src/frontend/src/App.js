@@ -1,19 +1,33 @@
-import React, { useState } from 'react';
-import Counter from './components/Counter';
+import React, {useState, useEffect} from 'react';
 
 function App() {
 
-    const [buttonName, setButtonName] = useState('클릭');
+    const [condition, setCondition] = useState(false);
+
+    const toggle = () => {
+        setCondition(!condition);
+    }
+
+    useEffect(() => {
+        console.log(condition)
+    }, [condition])
+
+    const renderCondition = condition
+        ? <div>True</div>
+        : <div>False</div>
+
+    const renderCondition2 = condition
+        ? 'True'
+        : 'False'
 
     return (
         <div className="App">
             <h1>Elly Nelly</h1>
-            {/*여러 개의 Counter를 중복 없이 구현할 수 있다.*/}
-            <Counter click="click1"/>
-            <Counter click={buttonName}/>
-            <Counter />
+            {renderCondition}
 
-            <button onClick={() => setButtonName('click clicked')}>Click</button>
+            <div> {renderCondition2} </div>
+
+            <button onClick={toggle}>Toggle</button>
         </div>
     );
 }
