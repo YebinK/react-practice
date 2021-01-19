@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Counter = () => {
+const Counter = (props) => {
 
     const [count, setCount] = useState(0); //count가 변경될 때마다 리렌더링 된다.
 
@@ -8,9 +8,11 @@ const Counter = () => {
         setCount(count + 1);
     }
 
+    const clickString = props.click || 'click default';
+
     return (
         <button onClick={increment}>
-            Click {count}
+            {clickString} {count}
         </button>
     );
 };
