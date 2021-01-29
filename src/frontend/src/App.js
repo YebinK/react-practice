@@ -31,6 +31,9 @@ function App() {
             title: movieTitle,
             year: movieYear,
         }])
+
+        setMovieTitle('');
+        setMovieYear('');
     }
 
     return (
