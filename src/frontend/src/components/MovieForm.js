@@ -12,9 +12,8 @@ const MovieForm = ({ addMovie }) => {
     const onSubmit = (event) => {
         event.preventDefault();
 
-        //2. 부모에게 받은 메소드를 자식에서 실행한다.
         addMovie({
-            id: 0,
+            id: Date.now(),
             title: movieTitle,
             year: movieYear,
         });
