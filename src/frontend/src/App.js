@@ -1,4 +1,5 @@
 import React from 'react';
+import Movie from "./components/Movie";
 
 function App() {
 
@@ -12,10 +13,7 @@ function App() {
 
     const renderMovies = movies.map(movie => {
         return (
-            <div className="movie" key={movie.id}>
-                <div className="movie-title">{movie.title}</div>
-                <div className="movie-year">{movie.year}</div>
-            </div>
+            <Movie movie={movie} key={movie.id} />
         )
     })
 
